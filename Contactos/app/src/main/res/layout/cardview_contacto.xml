@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Nicanor Orlando.
+  ~ Copyright (c) 7/12/21 09:27.
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvContacto"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardview_default_elevation"
+    app:cardBackgroundColor="@color/gris_muy_claro"
+    app:cardCornerRadius="7dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="7dp"
+        >
+
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@color/black"
+            android:layout_gravity="center_horizontal"
+            />
+        <TextView
+            android:id="@+id/tvNombreCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/nombre"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvTelefonoCV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/telefono"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

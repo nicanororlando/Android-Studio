@@ -1,0 +1,7 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="allowReplaceRegexp" value="Copyright (c) $today.year." />
+    <option name="notice" value="Created by Nicanor Orlando. &#10;Copyright (c) &amp;#36;today. &#10;All rights reserved." />
+    <option name="myName" value="Copyright" />
+  </copyright>
+</component>
