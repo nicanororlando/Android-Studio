@@ -3,7 +3,7 @@
  * Copyright (c) 7/12/21 09:27.
  */
 
-package example.com.contactos;
+package example.com.contactos.Principal;
 
 public class Contacto {
     private String nombre;

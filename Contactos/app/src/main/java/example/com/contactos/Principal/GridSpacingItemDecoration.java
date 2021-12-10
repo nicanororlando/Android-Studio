@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-package example.com.contactos;
+package example.com.contactos.Principal;
 
 import android.graphics.Rect;
 import android.view.View;

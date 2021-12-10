@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Nicanor Orlando.
+  ~ Copyright (c) 7/12/21 15:54.
+  ~ All rights reserved.
+  -->
+
+<resources>
+    <dimen name="elevations_actionbar">4dp</dimen>
+</resources>

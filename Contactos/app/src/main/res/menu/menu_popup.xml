@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Nicanor Orlando.
+  ~ Copyright (c) 7/12/21 19:32.
+  ~ All rights reserved.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mView"
+        android:title="@string/menu_about"
+        android:orderInCategory="1"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mViewDetail"
+        android:title="@string/menu_settings"
+        android:orderInCategory="1"
+        >
+    </item>
+</menu>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Nicanor Orlando.
+  ~ Copyright (c) 7/12/21 18:40.
+  ~ All rights reserved.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mEdit"
+        android:title="@string/menu_edit"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mDelete"
+        android:title="@string/menu_delete"
+        >
+    </item>
+</menu>
