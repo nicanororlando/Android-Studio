@@ -1,30 +1,19 @@
 package example.com.tareasemana4.Mascotas;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.TableLayout;
-
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import example.com.tareasemana4.DetallesMascota.DetalleMascota;
-import example.com.tareasemana4.MainActivity.MainActivity;
 import example.com.tareasemana4.R;
 
 public class ListaDeMascotas extends Fragment implements AdaptadorMascota.ItemClickListener{
@@ -57,12 +46,12 @@ public class ListaDeMascotas extends Fragment implements AdaptadorMascota.ItemCl
     public void inicializarListaMascotas(){
         mascotas = new ArrayList<>();
 
-        mascotas.add(new Mascotas(R.drawable.gmail, "Nicanor"));
-        mascotas.add(new Mascotas(R.drawable.phone, "pedrooo"));
-        mascotas.add(new Mascotas(R.drawable.gmail, "roberto"));
-        mascotas.add(new Mascotas(R.drawable.phone, "carlos"));
-        mascotas.add(new Mascotas(R.drawable.gmail, "menem"));
-        mascotas.add(new Mascotas(R.drawable.phone, "Messi"));
+        mascotas.add(new Mascotas(R.drawable.gmail, "peron", false));
+        mascotas.add(new Mascotas(R.drawable.phone, "pedrooo", false));
+        mascotas.add(new Mascotas(R.drawable.gmail, "roberto", false));
+        mascotas.add(new Mascotas(R.drawable.phone, "carlos", false));
+        mascotas.add(new Mascotas(R.drawable.gmail, "menem", false));
+        mascotas.add(new Mascotas(R.drawable.phone, "Messi", false));
     }
 
     //  Instanciacion de ContactoAdaptador.
