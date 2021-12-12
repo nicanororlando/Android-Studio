@@ -1,37 +1,28 @@
 package example.com.tareasemana4.Mascotas;
 
-import android.app.Activity;
-import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
-import example.com.tareasemana4.DetallesMascota.DetalleMascota;
-import example.com.tareasemana4.MainActivity.MainActivity;
-import example.com.tareasemana4.MainActivity.PageAdapter;
 import example.com.tareasemana4.R;
 
 public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.ContactoViewHolder>{
 
     ArrayList<Mascotas> mascotas;
-    Activity activity;
+    private final ItemClickListener clickListener;
 
     //  Constructor para cuando llamemos a la clase pasarle la lista de contactos y el contexto.
-    public AdaptadorMascota(ArrayList<Mascotas> contactos, Activity activity){
+    public AdaptadorMascota(ArrayList<Mascotas> contactos, ItemClickListener clickListener){
         this.mascotas = contactos;
-        this.activity = activity;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -53,7 +44,7 @@ public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.Cont
         contactoViewHolder.tvNombreCV.setText(mascota.getNombre());
 
         contactoViewHolder.itemView.setOnClickListener(v -> {
-            
+            clickListener.onItemClick(mascota);
         });
     }
 
@@ -76,5 +67,9 @@ public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.Cont
             imgFoto       = itemView.findViewById(R.id.imgFoto);
             tvNombreCV    = itemView.findViewById(R.id.tvNombreCV);
         }
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(Mascotas mascotas);
     }
 }
