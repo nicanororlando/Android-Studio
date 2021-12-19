@@ -1,6 +1,7 @@
 package example.com.tareasemana4.Mascotas;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +13,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import example.com.tareasemana4.BaseDatos.ConstructorMascotas;
+import example.com.tareasemana4.Pojo.Mascota;
 import example.com.tareasemana4.R;
 
 public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.MascotaViewHolder>{
 
-    ArrayList<Mascotas> mascotas;
+    ArrayList<Mascota> mascotas;
     private boolean mg;
     private final ItemClickListener clickListener;
+    private Context context;
 
     //  Constructor para cuando llamemos a la clase pasarle la lista de contactos y el contexto.
-    public AdaptadorMascota(ArrayList<Mascotas> mascotas, ItemClickListener clickListener){
+    public AdaptadorMascota(ArrayList<Mascota> mascotas, ItemClickListener clickListener, Context context){
         this.mascotas = mascotas;
         this.clickListener = clickListener;
+        this.context = context;
     }
 
     @NonNull
@@ -40,17 +46,25 @@ public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.Masc
     //  Lo utilizamos para setear todos los datos accediendo al ViewHolder.
     @Override
     public void onBindViewHolder(@NonNull MascotaViewHolder mascotaViewHolder, int position) {
-        Mascotas mascota = mascotas.get(position);
+        ConstructorMascotas constructorMascotas = new ConstructorMascotas(context);
+        Mascota mascota = mascotas.get(position);
         mascotaViewHolder.imgFoto.setImageResource(mascota.getFoto());
         mascotaViewHolder.tvNombreCV.setText(mascota.getNombre());
+        mascotaViewHolder.tvLikes.setText(mascota.getLikes() + " Likes");
+        //mascotaViewHolder.tvLikes.setText(constructorMascotas.obtenerLikesMascota(mascota) + " likes");
 
         mascotaViewHolder.itemView.setOnClickListener(v -> {
             clickListener.onItemClick(mascota);
         });
+
         mascotaViewHolder.btnLike.setOnClickListener(v -> {
             if (!mg){
                 mascotaViewHolder.btnLike.setImageResource(R.drawable.like_lleno);
                 mg = true;
+
+                constructorMascotas.darLikeMascota(mascota);
+
+                mascotaViewHolder.tvLikes.setText(constructorMascotas.obtenerLikesMascota(mascota) + " likes");
             }
             else {
                 mascotaViewHolder.btnLike.setImageResource(R.drawable.like_vacio);
@@ -72,6 +86,7 @@ public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.Masc
         private final ImageView imgFoto;
         private final TextView tvNombreCV;
         private final ImageView btnLike;
+        private final TextView tvLikes;
 
         public MascotaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,10 +94,11 @@ public class AdaptadorMascota extends RecyclerView.Adapter<AdaptadorMascota.Masc
             imgFoto       = itemView.findViewById(R.id.imgFoto);
             tvNombreCV    = itemView.findViewById(R.id.tvNombreCV);
             btnLike       = itemView.findViewById(R.id.btnLike);
+            tvLikes       = itemView.findViewById(R.id.tvLikes);
         }
     }
 
     public interface ItemClickListener {
-        void onItemClick(Mascotas mascotas);
+        void onItemClick(Mascota mascota);
     }
 }

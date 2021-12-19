@@ -1,7 +1,6 @@
 package example.com.tareasemana4.MainActivity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -22,6 +21,7 @@ import java.util.Objects;
 
 import example.com.tareasemana4.DetallesMascota.DetalleMascota;
 import example.com.tareasemana4.Mascotas.ListaDeMascotas;
+import example.com.tareasemana4.MenuOpciones.Memoria;
 import example.com.tareasemana4.MenuOpciones.About;
 import example.com.tareasemana4.MenuOpciones.Settings;
 import example.com.tareasemana4.R;
@@ -96,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, Settings.class));
                 break;
 
+            case R.id.mFileIO:
+                startActivity(new Intent(this, Memoria.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

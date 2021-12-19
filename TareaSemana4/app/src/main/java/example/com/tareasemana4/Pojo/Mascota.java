@@ -1,15 +1,22 @@
-package example.com.tareasemana4.Mascotas;
+package example.com.tareasemana4.Pojo;
 
-public class Mascotas {
+public class Mascota {
+    private int id;
     private String nombre;
     private int foto;
     private boolean mg;
+    private int likes;
 
     //  ctrl + N ---> "Constructor" :
-    public Mascotas(int foto, String nombre, boolean mg) {
+    public Mascota(int foto, String nombre, boolean mg, int likes) {
         this.nombre = nombre;
         this.foto = foto;
         this.mg = mg;
+        this.likes = likes;
+    }
+
+    public Mascota() {
+
     }
 
     //  ctrl + N ---> "Getter and Setter" :
@@ -33,7 +40,23 @@ public class Mascotas {
         return mg;
     }
 
-    public void setMg(int foto) {
+    public void setMg(boolean mg) {
         this.mg = mg;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

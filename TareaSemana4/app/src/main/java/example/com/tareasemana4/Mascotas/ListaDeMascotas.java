@@ -14,13 +14,17 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import example.com.tareasemana4.DetallesMascota.DetalleMascota;
+import example.com.tareasemana4.Pojo.Mascota;
+import example.com.tareasemana4.BaseDatos.Presentador.IRecyclerViewFragmentPresenter;
+import example.com.tareasemana4.BaseDatos.Presentador.RecyclerViewFragmentPresenter;
 import example.com.tareasemana4.R;
 
-public class ListaDeMascotas extends Fragment implements AdaptadorMascota.ItemClickListener{
+public class ListaDeMascotas extends Fragment implements AdaptadorMascota.ItemClickListener, IRecyclerViewFragmentView {
 
     //  Importante declarar aca para poder utilizarlo fuera del onCreate.
-    ArrayList<Mascotas> mascotas;
+    ArrayList<Mascota> mascotas;
     private RecyclerView rvMascotas;
+    private IRecyclerViewFragmentPresenter iRecyclerViewFragmentPresenter;
     ViewPager2 viewPager2;
 
     public ListaDeMascotas(ViewPager2 viewPager2){
@@ -34,37 +38,17 @@ public class ListaDeMascotas extends Fragment implements AdaptadorMascota.ItemCl
         View view = inflater.inflate(R.layout.fragment_lista_de_mascotas, container, false);
 
         rvMascotas = view.findViewById(R.id.rvMascotas);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        rvMascotas.setLayoutManager(llm);
 
-        inicializarListaMascotas();
-        inicializarAdaptador();
+        /*  Al pasarle ya el objeto "iReciclerViewFragmentView", desde la otra clase podemos acceder a los metodos tambien
+        entonces ya desde ahi llamamos al metodo "generarLinearLayoutVertical()" */
+        iRecyclerViewFragmentPresenter = new RecyclerViewFragmentPresenter(this, getContext());
 
         return view;
     }
 
-    public void inicializarListaMascotas(){
-        mascotas = new ArrayList<>();
-
-        mascotas.add(new Mascotas(R.drawable.gmail, "peron", false));
-        mascotas.add(new Mascotas(R.drawable.phone, "pedrooo", false));
-        mascotas.add(new Mascotas(R.drawable.gmail, "roberto", false));
-        mascotas.add(new Mascotas(R.drawable.phone, "carlos", false));
-        mascotas.add(new Mascotas(R.drawable.gmail, "menem", false));
-        mascotas.add(new Mascotas(R.drawable.phone, "Messi", false));
-    }
-
-    //  Instanciacion de ContactoAdaptador.
-    /*  Este adaptador primero va a llamar al layout en el onCreate, despues en el onBind le pasa todos los datos
-    de la lista de contactos que el viewHolder esta declarando.  */
-    public void inicializarAdaptador() {
-        AdaptadorMascota adaptador = new AdaptadorMascota(mascotas, this);
-        rvMascotas.setAdapter(adaptador);
-    }
-
     @Override
-    public void onItemClick(Mascotas mascotas) {
-        Fragment fragment = DetalleMascota.newInstance(mascotas.getNombre());
+    public void onItemClick(Mascota mascota) {
+        Fragment fragment = DetalleMascota.newInstance(mascota.getNombre());
         viewPager2.setCurrentItem(1,true);
 
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -77,5 +61,25 @@ public class ListaDeMascotas extends Fragment implements AdaptadorMascota.ItemCl
     public void onResume() {
         getParentFragmentManager().popBackStack();
         super.onResume();
+    }
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(RecyclerView.VERTICAL);
+        rvMascotas.setLayoutManager(llm);
+    }
+
+    //  Instanciacion de ContactoAdaptador.
+    /*  Este adaptador primero va a llamar al layout en el onCreate, despues en el onBind le pasa todos los datos
+    de la lista de contactos que el viewHolder esta declarando.  */
+    @Override
+    public AdaptadorMascota crearAdaptador(ArrayList<Mascota> mascotas) {
+        return new AdaptadorMascota(mascotas, this, getContext());
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(AdaptadorMascota adaptadorMascota) {
+        rvMascotas.setAdapter(adaptadorMascota);
     }
 }
