@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mAbout"
+        android:title="@string/menu_about"
+        android:orderInCategory="1"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mSettings"
+        android:title="@string/menu_settings"
+        android:orderInCategory="2"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mFileIO"
+        android:title="@string/menu_memoria"
+        android:orderInCategory="3"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mMemo"
+        android:title="@string/menuuu"
+        android:orderInCategory="4"
+        >
+    </item>
+
+
+</menu>

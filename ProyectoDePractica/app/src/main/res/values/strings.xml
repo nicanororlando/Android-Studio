@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Tarea Semana4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Menu -->
+    <string name="menu_about">About</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_memoria">Memoria</string>
+    <string name="menuuu">Guardar Archivo</string>
+
+    <!-- Tab -->
+    <string name="tab_list">Lista</string>
+    <string name="tab_details">Detalles</string>
+
+    <!-- Text View -->
+    <string name="tvTitulo">Manejo de Memoria</string>
+    <string name="pLike">0 Likes</string>
+
+    <!-- Hint -->
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_correo">Correo</string>
+
+    <!-- Button -->
+    <string name="boton_guardar">Guardar Archivo</string>
+    <string name="boton_guardar_preferencias">Guardar Preferencias</string>
+    <string name="boton_mostrar_preferencias">Mostrar Preferencias</string>
+
+</resources>
